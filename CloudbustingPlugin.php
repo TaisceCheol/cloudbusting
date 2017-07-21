@@ -15,9 +15,7 @@ namespace Craft;
 
 class CloudbustingPlugin extends BasePlugin
 {
-    /**
-     * @return mixed
-     */
+
     public function init()
     {
         parent::init();
@@ -26,36 +24,19 @@ class CloudbustingPlugin extends BasePlugin
         });       
     }
 
-    /**
-     * @return mixed
-     */
     public function getName()
     {
          return Craft::t('cloudbusting');
     }
 
-    /**
-     * @return mixed
-     */
     public function getDescription()
     {
         return Craft::t('Purge Cloudflare cache for Craft CMS entries on save');
     }
 
-    /**
-     * @return string
-     */
     public function getDocumentationUrl()
     {
         return 'https://github.com/TaisceCheol/cloudbusting/blob/master/README.md';
-    }
-
-    /**
-     * @return string
-     */
-    public function getReleaseFeedUrl()
-    {
-        return 'https://raw.githubusercontent.com/TaisceCheol/cloudbusting/master/releases.json';
     }
 
     public function getVersion()
