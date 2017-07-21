@@ -1,0 +1,32 @@
+{% import '_includes/forms' as forms %}
+
+<h2>Purge an entry's url from Cloudflare cache when that entry is saved.</h2>
+
+<p>You need to supply a few credentials in order to connect to the Cloudflare API. Your API Key can be found on the <strong>My Account Settings</strong> page. A Zone ID is also required and can be found on your website's <strong>Overview</strong> page in the Cloudflare admin panel. You also need to supply the email address associated with your Cloudflare account.</p>
+
+{{ forms.textField({
+	label: 'Zone ID'|t,
+	required: true,
+	name: 'zone',
+	value: settings.zone,
+	errors: settings.getErrors('zone')
+}) }}
+
+{{ forms.textField({
+	label: 'API Key'|t,
+	required: true,
+	name: 'apiKey',
+	value: settings.apiKey,
+	errors: settings.getErrors('apiKey')
+}) }}
+
+{{ forms.textField({
+	label: 'Email'|t,
+	required: true,
+	name: 'email',
+	value: settings.email,
+	errors: settings.getErrors('email')
+}) }}
+
+
+
