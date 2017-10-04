@@ -48,9 +48,9 @@ class CloudbustingService extends BaseApplicationComponent
 		$parsed_url = parse_url($page_url);
 		if (array_key_exists('path',$parsed_url) == 1) {
 			$split_path = explode('/',trim($parsed_url['path'],'/'));
-			$host = $parsed['scheme'].'://'.$parsed['host'];
-			$bubbled_url = array(count($split_path));
-			for ($i = 0; $i < count($path); $i++) {
+			$host = $parsed_url['scheme'].'://'.$parsed_url['host'];
+			$bubbled_url = array();
+			for ($i = 0; $i < count($split_path); $i++) {
 				array_push($bubbled_url,$host.'/'.join('/',array_slice($split_path,0,$i+1)));
 			}
 			$files = array('files' => $bubbled_url);
