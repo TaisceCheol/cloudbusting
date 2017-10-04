@@ -45,7 +45,18 @@ class CloudbustingService extends BaseApplicationComponent
 
 	private function _formatFilesBlob($page_url)
 	{
-		$files = array('files' => array($page_url));
+		$parsed_url = parse_url($page_url);
+		if (array_key_exists('path',$parsed_url) == 1) {
+			$split_path = explode('/',trim($parsed_url['path'],'/'));
+			$host = $parsed['scheme'].'://'.$parsed['host'];
+			$bubbled_url = array(count($split_path));
+			for ($i = 0; $i < count($path); $i++) {
+				array_push($bubbled_url,$host.'/'.join('/',array_slice($split_path,0,$i+1)));
+			}
+			$files = array('files' => $bubbled_url);
+		} else {
+			$files = array('files' => array($page_url));			
+		}
 		return json_encode($files);
 	}
 
